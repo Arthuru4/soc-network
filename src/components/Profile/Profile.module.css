@@ -5,15 +5,13 @@
 }
 
 .content img {
-    height: 300px;
-}
+    /*height: 250px;*/
+    width: 100%;
 
-.post {
-    color: beige;
 }
 
 .ava img {
-        height: auto;
-
+    display: inline-block;
+    height: auto;
     width: 100px;
 }
