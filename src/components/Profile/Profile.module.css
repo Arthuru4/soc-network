@@ -1,13 +1,6 @@
-.content {
-    grid-area: c;
-    background-color: cadetblue;
-
-}
-
-.content img {
+.wrap img {
     /*height: 250px;*/
     width: 100%;
-
 }
 
 .ava img {

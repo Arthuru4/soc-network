@@ -3,8 +3,8 @@ import s from "./Profile.module.css";
 import MyPosts from "./MyPosts/MyPosts";
 import Legend from "./Legend/Legend";
 
-const Content = () => {
-    return <div className={s.content}>
+const Profile = () => {
+    return <div className={s.wrap}>
                 <div>
                     <img src="https://static.schools.by/images/header-bg/img-35.jpg" alt=""/>
                 </div>
@@ -17,4 +17,4 @@ const Content = () => {
             </div>
 };
 
-export default Content;
+export default Profile;
