@@ -1,5 +1,58 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## OWN NOTES ON COURSE REACT JS IT-KAMASUTRA
+URL: https://www.youtube.com/watch?v=Zgd9IlbhDcU&list=PLcvhF2Wqh7DNVy1OCUpG3i5lyxyBWhGZ8
+
+###CSS MODULES:
+  - Need to add '.module' in css file name before '.css' ('Name.module.css')
+  css Exaple:
+  
+  CSS: name 'Name.module.css'
+  ```css
+  .someClass {
+    color: #FFF
+  }
+  ```
+  JSX:
+  ```jsx
+  import s from './Name.module.css'
+  
+  <div className={s.someClass}/>
+  ```
+  
+###PROPS:
+   - add any property like argument to component function.
+   Example: 
+ ```
+ <Home name='Home' anyProp='someProperty'/>
+ ...
+ const Home = (props) => {
+   return (
+     <div>
+     {props.name} //Home
+     {props.anyProp} //someProperty
+     <div />
+   )
+ }
+ ```
+#lesson20:
+###BASE:
+ - evt.preventDefault() (how works NavLink)
+ - HTML5 history API (how works NavLink)
+###ROUTING:
+   - npm module react-router-dom.
+   - Need to wrap base tag in 'BrowserRouter'
+   Example: 
+   ```
+   <BrowserRouter>
+      <Router path='*/profile*' component={*Profilee*}/>
+      <Router path='*/home*' component={*Home*}/>
+      
+      <div className={s.item}><NavLink activeClassName={s.picked} to="/profile">Profile</NavLink></div>
+      <div className={s.item}><NavLink activeClassName={s.picked} to="/home">Home</NavLink></div>
+   <BrowserRouter/>
+   ```
+
 ## Available Scripts
 
 In the project directory, you can run:
