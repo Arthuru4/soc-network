@@ -5,7 +5,7 @@ import {NavLink} from 'react-router-dom';
 const Name = (props) => {
     return (
         <div className={s.name}>
-            <NavLink to={'/dialogs/' + props.name}>{props.name}</NavLink>
+            <NavLink to={'/dialogs/' + props.id}>{props.name}</NavLink>
         </div>
     )
 };

@@ -2,7 +2,7 @@ import React from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
 
-const MyPosts = () => {
+const MyPosts = (props) => {
     return <div className={s.postHead}>
         <h3>My Posts</h3>
         <div>
@@ -14,10 +14,11 @@ const MyPosts = () => {
             </div>
         </div>
         <div className={s.posts}>
-        <Post text='Hi'/>
-        <Post text='Hello, How r u?'/>
-        <Post text='Cool, and u?'/>
-        <Post text='Hmm... green-green grass'/>
+            {
+                props.myPostsProps.map((item, i) => {
+                    return <Post key={i} text={item.text} likesCount={item.likesCount} />
+                })
+            }
         </div>
     </div>
 };
