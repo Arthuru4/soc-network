@@ -13,3 +13,7 @@
     grid-area: c;
     background-color: cadetblue;
 }
+
+img {
+    user-select: none;
+}
