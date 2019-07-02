@@ -9,4 +9,11 @@
 }
 
 .dialog__messages {
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+.dialog__msgwrapper {
+    /*margin-top: 1vh;*/
+    border: 2px solid green;
+    border-radius: 2vh;
 }

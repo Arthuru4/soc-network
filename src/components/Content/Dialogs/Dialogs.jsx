@@ -8,13 +8,15 @@ const Dialogs = (props) => {
         <div className={s.dialogs}>
             <div className={s.dialog__names}>
                 {props.state.users.map((item, i) => {
-                    return <Name key={i} name={item.name} id={item.id}/>
+                    return <Name key={i} state={item}/>
                 })}
             </div>
             <div className={s.dialog__messages}>
+                <div className={s.dialog__msgwrapper}>
                    {props.state.messages.map((item, i) => {
-                    return <Message key={i} text={item.message} id={item.id}/>
+                    return <Message key={i} state={item}/>
                 })}
+                </div>
             </div>
         </div>
     )

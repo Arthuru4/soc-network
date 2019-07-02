@@ -48,6 +48,11 @@ URL: https://www.youtube.com/watch?v=Zgd9IlbhDcU&list=PLcvhF2Wqh7DNVy1OCUpG3i5ly
       <Router path='*/profile*' component={*Profilee*}/>
       <Router path='*/home*' component={*Home*}/>
       
+      /////** OR, of you need add props to component
+      <Router path='*/home*' render={() => <Profile state={props.state.postData}/>}/>
+      <Router path='*/profile*' render={() => <Profile state={props.state.postData}/>}/>
+      *//////
+
       <div className={s.item}><NavLink activeClassName={s.picked} to="/profile">Profile</NavLink></div>
       <div className={s.item}><NavLink activeClassName={s.picked} to="/home">Home</NavLink></div>
    <BrowserRouter/>

@@ -9,7 +9,5 @@
         color: white;
 }
 .item a.picked {
-    text-decoration: MenuText;
     color: chartreuse;
-
 }

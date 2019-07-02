@@ -1,3 +1,17 @@
 .name {
+    border: 2px solid brown;
+   /*text-align: center;*/
+    padding-left: 5px;
+    height: 60px;
+}
 
+.name a {
+    text-decoration: none;
+        color: black;
+}
+.name img {
+    height: 100%;
+}
+.name a.picked {
+    color: yellow;
 }

@@ -1,3 +1,12 @@
 .message {
+}
+.msgWraper {
+    margin:10px;
+}
+.message_left {
+    text-align: left;
+}
 
+.message_right {
+    text-align: right;
 }
