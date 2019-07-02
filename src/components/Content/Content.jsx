@@ -11,8 +11,8 @@ import s from './Content.module.css';
 const Content = (props) => {
     return (
         <div className={'app-wrapper__content'}>
-            <Route path='/dialogs' render={() => <Dialogs dialogsData={props.dialogsData} messages={props.messages}/>}/>
-            <Route path='/profile' render={() => <Profile myPostsProps={props.myPostsProps}/>}/>
+            <Route path='/dialogs' render={() => <Dialogs state={props.state.messagesData}/>}/>
+            <Route path='/profile' render={() => <Profile state={props.state.postData}/>}/>
             <Route path='/news' component={News}/>
             <Route path='/Music' component={Music}/>
             <Route path='/Settings' component={Settings}/>
