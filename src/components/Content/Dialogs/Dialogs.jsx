@@ -13,9 +13,9 @@ const Dialogs = (props) => {
             </div>
             <div className={s.dialog__messages}>
                 <div className={s.dialog__msgwrapper}>
-                   {props.state.messages.map((item, i) => {
-                    return <Message key={i} state={item}/>
-                })}
+                    {props.state.messages.map((item, i) => {
+                        return <Message key={i} state={item}/>
+                    })}
                 </div>
             </div>
         </div>

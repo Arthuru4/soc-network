@@ -4,10 +4,25 @@
     padding: 20px;
 }
 
+.button {
+    height: 40px;
+    width: 40px;
+}
+
+.button_wrapp {
+    position: absolute;
+    top: 50%;
+}
+
+.button_left {
+    left: 0;
+}
+
 .item a {
     text-decoration: none;
-        color: white;
+    color: white;
 }
+
 .item a.picked {
     color: chartreuse;
 }
