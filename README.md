@@ -58,6 +58,26 @@ URL: https://www.youtube.com/watch?v=Zgd9IlbhDcU&list=PLcvhF2Wqh7DNVy1OCUpG3i5ly
    <BrowserRouter/>
    ```
 
+###REFS: 
+   - TO GET ELEMENT FROM DOM:
+   ```jsx
+    let ref = React.createRef();
+
+    let handleTextArea = () => {
+        let text = ref.current.value;
+        alert(text)
+    }
+
+...
+    <div>
+        <textarea ref ={ref} name="message"/>
+    </div>
+    <div>
+        <button onClick={handleTextArea}>Add Post</button>
+    </div>
+...
+
+```
 ## Available Scripts
 
 In the project directory, you can run:

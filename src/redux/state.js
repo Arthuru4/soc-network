@@ -46,7 +46,8 @@ const state = {
             {id: 5, message: 'someText Pasha', yours: true},
             {id: 6, message: 'someText Vova', yours: false}
         ]
-    }
+    },
+    sideBar: {}
 };
 
 export default state;

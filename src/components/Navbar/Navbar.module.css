@@ -4,13 +4,47 @@
     padding: 20px;
 }
 
+.friends {
+    font-size: 30px;
+    color: white;
+    padding-top: 30pt;
+}
+
+.elemFriend {
+    text-align: center;
+    font-size: 10px;
+
+    display: inline;
+    border: 1px solid red;
+    margin: 2pt;
+}
+
+.Wrapp {
+    border: 2px solid green;
+    display: grid;
+
+    grid-template-columns: auto auto auto;
+    grid-template-rows: 2fr 1fr;
+}
+
+.textName {
+}
+
+.padding {
+    padding-top: 20pt;
+}
+
 .button {
+    height: 40px;
+    width: 80px;
+}
+
+.button_hidden {
     height: 40px;
     width: 40px;
 }
 
 .button_wrapp {
-    position: absolute;
     top: 50%;
 }
 

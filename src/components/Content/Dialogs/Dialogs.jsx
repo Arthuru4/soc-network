@@ -4,6 +4,12 @@ import Name from './Name/Name';
 import Message from './Message/Message';
 
 const Dialogs = (props) => {
+    let refTextMessage = React.createRef()
+    let handlerMessage = () => {
+        let text = refTextMessage.current.value;
+        // alert(text)
+    };
+
     return (
         <div className={s.dialogs}>
             <div className={s.dialog__names}>
@@ -16,6 +22,14 @@ const Dialogs = (props) => {
                     {props.state.messages.map((item, i) => {
                         return <Message key={i} state={item}/>
                     })}
+                </div>
+                <div>
+                    <div>
+                        <textarea ref={refTextMessage}/>
+                    </div>
+                    <div>
+                        <button onClick={handlerMessage}>PUSH ME</button>
+                    </div>
                 </div>
             </div>
         </div>
