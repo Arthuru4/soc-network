@@ -11,11 +11,17 @@ import s from './Content.module.css';
 const Content = (props) => {
     return (
         <div className={'app-wrapper__content'}>
-            <Route path='/dialogs' render={() => <Dialogs state={props.state.messagesData}/>}/>
-            <Route path='/profile'render={() =>
+            <Route path='/dialogs' render={() =>
+                <Dialogs
+                    messagesData={props.state.messagesData}
+                    updateMessage={props.updateMessage}
+                    addMessage={props.addMessage}
+                />}/>
+
+            <Route path='/profile' render={() =>
                 <Profile profilePage={props.state.profilePage}
-                addPost={props.addPost}
-                updatePost={props.updatePost}/>}/>
+                         addPost={props.addPost}
+                         updatePost={props.updatePost}/>}/>
 
             <Route path='/news' component={News}/>
             <Route path='/Music' component={Music}/>

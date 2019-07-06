@@ -8,6 +8,36 @@
 .dialog__names {
 }
 
+.button {
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: white;
+}
+
+.button_red {
+    animation-name: red_border;
+    animation-duration: 0.2s;
+    animation-iteration-count: 2;
+}
+
+@keyframes red_border {
+    0% {
+        background-color: buttonface;
+    }
+    50% {
+        background-color: #ff0000;
+    }
+    100% {
+        background-color: buttonface;
+    }
+}
+
+.error_text {
+    color: #ff0000
+}
+
 .dialog__messages {
     margin-left: 5vw;
     margin-right: 5vw;

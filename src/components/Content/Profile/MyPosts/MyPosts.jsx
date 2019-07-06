@@ -26,7 +26,7 @@ const MyPosts = (props) => {
     };
 
     let updatePost = () => {
-        if (!errorText.current.classList.contains('hidden')) errorText.current.classList.add('hidden')
+        if (!errorText.current.classList.contains('hidden')) errorText.current.classList.add('hidden');
 
         props.updatePost(ref.current.value);
     };

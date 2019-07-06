@@ -50,9 +50,26 @@ const state = {
             {id: 4, message: 'someText Vetal', yours: false},
             {id: 5, message: 'someText Pasha', yours: true},
             {id: 6, message: 'someText Vova', yours: false}
-        ]
+        ],
+        newMessage: 'it_Arthuru4'
     },
     sideBar: {}
+};
+
+export let updateMessage = (val) => {
+    state.messagesData.newMessage = val;
+
+    renderEntireTree(state)
+};
+
+export let addMessage = () => {
+    if (state.messagesData.newMessage) {
+        let tempMsg = {message: state.messagesData.newMessage, yours: true, id: state.messagesData.messages.length};
+        state.messagesData.messages.push(tempMsg);
+        state.messagesData.newMessage = '';
+
+        renderEntireTree(state)
+    }
 };
 
 export let updatePost = (val) => {
