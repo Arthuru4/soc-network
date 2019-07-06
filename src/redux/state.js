@@ -1,10 +1,15 @@
+import {renderEntireTree} from './render';
+
 const state = {
-    postData: [
-        {text: 'Hi', likesCount: '1', id: 1},
-        {text: 'Hello, How r u?', likesCount: '21', id: 2},
-        {text: 'Cool, and u??', likesCount: '11', id: 3},
-        {text: 'Hmm... green-green grass', likesCount: '2', id: 4},
-    ],
+    profilePage: {
+        postData: [
+            {text: 'Hi', likesCount: '1', id: 1},
+            {text: 'Hello, How r u?', likesCount: '21', id: 2},
+            {text: 'Cool, and u??', likesCount: '11', id: 3},
+            {text: 'Hmm... green-green grass', likesCount: '2', id: 4},
+        ],
+        newPostInfo: 'it-kamasutra.com'
+    },
     messagesData: {
         users: [
             {
@@ -48,6 +53,22 @@ const state = {
         ]
     },
     sideBar: {}
+};
+
+export let updatePost = (val) => {
+    state.profilePage.newPostInfo = val;
+
+    renderEntireTree(state)
+};
+
+export let addPost = () => {
+    if (state.profilePage.newPostInfo) {
+        let tempPost = {text: state.profilePage.newPostInfo, likesCount: 0, id: state.profilePage.postData.length};
+        state.profilePage.postData.push(tempPost);
+        state.profilePage.newPostInfo = '';
+
+        renderEntireTree(state)
+    }
 };
 
 export default state;

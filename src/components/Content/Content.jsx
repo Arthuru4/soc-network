@@ -12,7 +12,11 @@ const Content = (props) => {
     return (
         <div className={'app-wrapper__content'}>
             <Route path='/dialogs' render={() => <Dialogs state={props.state.messagesData}/>}/>
-            <Route path='/profile' render={() => <Profile state={props.state.postData}/>}/>
+            <Route path='/profile'render={() =>
+                <Profile profilePage={props.state.profilePage}
+                addPost={props.addPost}
+                updatePost={props.updatePost}/>}/>
+
             <Route path='/news' component={News}/>
             <Route path='/Music' component={Music}/>
             <Route path='/Settings' component={Settings}/>
