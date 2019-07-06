@@ -1,4 +1,4 @@
-import {renderEntireTree} from './render';
+let renderEntireTree = null;
 
 const state = {
     profilePage: {
@@ -56,13 +56,13 @@ const state = {
     sideBar: {}
 };
 
-export let updateMessage = (val) => {
+export const updateMessage = (val) => {
     state.messagesData.newMessage = val;
 
     renderEntireTree(state)
 };
 
-export let addMessage = () => {
+export const addMessage = () => {
     if (state.messagesData.newMessage) {
         let tempMsg = {message: state.messagesData.newMessage, yours: true, id: state.messagesData.messages.length};
         state.messagesData.messages.push(tempMsg);
@@ -72,20 +72,25 @@ export let addMessage = () => {
     }
 };
 
-export let updatePost = (val) => {
+export const updatePost = (val) => {
     state.profilePage.newPostInfo = val;
 
     renderEntireTree(state)
 };
 
-export let addPost = () => {
+export const addPost = () => {
     if (state.profilePage.newPostInfo) {
-        let tempPost = {text: state.profilePage.newPostInfo, likesCount: 0, id: state.profilePage.postData.length};
+        const tempPost = {text: state.profilePage.newPostInfo, likesCount: 0, id: state.profilePage.postData.length};
+
         state.profilePage.postData.push(tempPost);
         state.profilePage.newPostInfo = '';
 
         renderEntireTree(state)
     }
+};
+
+export const subscribe = (observer) => {
+    renderEntireTree = observer;
 };
 
 export default state;
