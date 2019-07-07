@@ -2,6 +2,7 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import Name from './Name/Name';
 import Message from './Message/Message';
+import {addMessageData, updateMessageData} from '../../../redux/state';
 
 const Dialogs = (props) => {
     let refTextMessage = React.createRef(),
@@ -9,7 +10,7 @@ const Dialogs = (props) => {
         style = s;
 
     let handlerMessage = (e) => {
-        if (props.messagesData.newMessage) props.addMessage();
+        if (props.messagesData.newMessage) props.dispatch(addMessageData());
         else {
             e.target.classList.add(style.button_red);
             e.target.disabled = true;
@@ -29,7 +30,7 @@ const Dialogs = (props) => {
         if (!errorText.current.classList.contains('hidden')) errorText.current.classList.add('hidden');
         let text = refTextMessage.current.value;
 
-        props.updateMessage(text);
+        props.dispatch(updateMessageData(text));
     };
 
     return (

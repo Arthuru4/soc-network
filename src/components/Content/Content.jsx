@@ -14,14 +14,12 @@ const Content = (props) => {
             <Route path='/dialogs' render={() =>
                 <Dialogs
                     messagesData={props.state.messagesData}
-                    updateMessage={props.updateMessage}
-                    addMessage={props.addMessage}
+                    dispatch={props.dispatch}
                 />}/>
 
             <Route path='/profile' render={() =>
                 <Profile profilePage={props.state.profilePage}
-                         addPost={props.addPost}
-                         updatePost={props.updatePost}
+                         dispatch={props.dispatch}
                 />}/>
 
             <Route path='/news' component={News}/>

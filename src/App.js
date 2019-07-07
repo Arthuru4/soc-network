@@ -11,11 +11,7 @@ function App(props) {
             <div className='app-wrapper'>
                 <Header/>
                 <NavBar/>
-                <Content state={props.state}
-                         addPost={props.addPost}
-                         updatePost={props.updatePost}
-                         updateMessage={props.updateMessage}
-                         addMessage={props.addMessage}
+                <Content state={props.state} dispatch={props.dispatch}
                 />
             </div>
         </BrowserRouter>

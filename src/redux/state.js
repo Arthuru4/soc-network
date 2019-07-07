@@ -1,3 +1,8 @@
+const ADD_MESSAGE = 'ADD-MESSAGE';
+const UPDATE_MESSAGE = 'UPDATE-MESSAGE';
+const UPDATE_POST = 'UPDATE-POST';
+const ADD_POST = 'ADD-POST';
+
 const store = {
     _state: {
         profilePage: {
@@ -54,7 +59,36 @@ const store = {
         },
         sideBar: {}
     },
-    addMessage() {
+    _callCallBack(val) {
+        if (this.callback) this.callback(val)
+    },
+
+    getState() {
+        return this._state;
+    },
+    subscribe(callback) {
+        this.callback = callback;
+    },
+
+    dispatch(action: { type: string, data: any }) {
+        switch (action.type) {
+            case ADD_MESSAGE:
+                this._addMessage();
+                break;
+            case ADD_POST:
+                this._addPost();
+                break;
+            case UPDATE_MESSAGE:
+                this._updateMessage(action.data);
+                break;
+            case UPDATE_POST:
+                this._updatePost(action.data);
+                break;
+            default:
+                throw new Error('WRONG TYPE')
+        }
+    },
+    _addMessage() {
         if (this._state.messagesData.newMessage) {
             let tempMsg = {
                 message: this._state.messagesData.newMessage,
@@ -67,15 +101,12 @@ const store = {
             this._callCallBack(this._state)
         }
     },
-    getState(){
-        return this._state;
-    },
-    updatePost(val) {
+    _updatePost(val) {
         this._state.profilePage.newPostInfo = val;
 
         this._callCallBack(this._state)
     },
-    addPost() {
+    _addPost() {
         if (this._state.profilePage.newPostInfo) {
             const tempPost = {
                 text: this._state.profilePage.newPostInfo,
@@ -89,17 +120,24 @@ const store = {
             this._callCallBack(this._state)
         }
     },
-    updateMessage(val) {
+    _updateMessage(val) {
         this._state.messagesData.newMessage = val;
 
         this._callCallBack(this._state)
     },
-    subscribe(callback) {
-        this.callback = callback;
-    },
-    _callCallBack(val) {
-        if (this.callback) this.callback(val)
-    },
+};
+
+export const addPostData = () => {
+    return {type: ADD_POST}
+};
+export const addMessageData = () => {
+    return {type: ADD_MESSAGE}
+};
+export let updatePostData = (text) => {
+    return {type: UPDATE_POST, data: text}
+};
+export const updateMessageData = (text) => {
+    return {type: UPDATE_MESSAGE, data: text}
 };
 
 export default store;

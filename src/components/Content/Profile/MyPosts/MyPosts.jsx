@@ -1,6 +1,7 @@
 import React from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
+import {addPostData, updatePostData} from '../../../../redux/state';
 
 const MyPosts = (props) => {
     let ref = React.createRef(),
@@ -8,7 +9,7 @@ const MyPosts = (props) => {
         style = s;
 
     let handleTextArea = (e) => {
-        if (props.myPostsProps.newPostInfo) props.addPost();
+        if (props.myPostsProps.newPostInfo) props.dispatch(addPostData());
         else {
             e.target.classList.add(style.button_red);
             e.target.disabled = true;
@@ -27,8 +28,8 @@ const MyPosts = (props) => {
 
     let updatePost = () => {
         if (!errorText.current.classList.contains('hidden')) errorText.current.classList.add('hidden');
-
-        props.updatePost(ref.current.value);
+        const text = ref.current.value;
+        props.dispatch(updatePostData(text));
     };
 
     return <div className={s.postHead}>
