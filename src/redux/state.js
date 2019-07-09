@@ -1,7 +1,6 @@
-const ADD_MESSAGE = 'ADD-MESSAGE';
-const UPDATE_MESSAGE = 'UPDATE-MESSAGE';
-const UPDATE_POST = 'UPDATE-POST';
-const ADD_POST = 'ADD-POST';
+import profileReducer from './reducers/profile-reduces';
+import messageReducer from './reducers/messages-reduces';
+import sidebarReducer from './reducers/sidebar-reduces';
 
 const store = {
     _state: {
@@ -71,73 +70,15 @@ const store = {
     },
 
     dispatch(action: { type: string, data: any }) {
-        switch (action.type) {
-            case ADD_MESSAGE:
-                this._addMessage();
-                break;
-            case ADD_POST:
-                this._addPost();
-                break;
-            case UPDATE_MESSAGE:
-                this._updateMessage(action.data);
-                break;
-            case UPDATE_POST:
-                this._updatePost(action.data);
-                break;
-            default:
-                throw new Error('WRONG TYPE')
+        if (action.type) {
+            profileReducer(this._state.profilePage, action);
+            messageReducer(this._state.messagesData, action);
+            sidebarReducer(this._state.sideBar, action);
         }
-    },
-    _addMessage() {
-        if (this._state.messagesData.newMessage) {
-            let tempMsg = {
-                message: this._state.messagesData.newMessage,
-                yours: true,
-                id: this._state.messagesData.messages.length
-            };
-            this._state.messagesData.messages.push(tempMsg);
-            this._state.messagesData.newMessage = '';
-
-            this._callCallBack(this._state)
-        }
-    },
-    _updatePost(val) {
-        this._state.profilePage.newPostInfo = val;
 
         this._callCallBack(this._state)
-    },
-    _addPost() {
-        if (this._state.profilePage.newPostInfo) {
-            const tempPost = {
-                text: this._state.profilePage.newPostInfo,
-                likesCount: 0,
-                id: this._state.profilePage.postData.length
-            };
 
-            this._state.profilePage.postData.push(tempPost);
-            this._state.profilePage.newPostInfo = '';
-
-            this._callCallBack(this._state)
-        }
-    },
-    _updateMessage(val) {
-        this._state.messagesData.newMessage = val;
-
-        this._callCallBack(this._state)
-    },
-};
-
-export const addPostData = () => {
-    return {type: ADD_POST}
-};
-export const addMessageData = () => {
-    return {type: ADD_MESSAGE}
-};
-export let updatePostData = (text) => {
-    return {type: UPDATE_POST, data: text}
-};
-export const updateMessageData = (text) => {
-    return {type: UPDATE_MESSAGE, data: text}
+    }
 };
 
 export default store;

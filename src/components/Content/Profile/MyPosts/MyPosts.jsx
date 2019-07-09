@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
-import {addPostData, updatePostData} from '../../../../redux/state';
+import {addPostData, updatePostData} from '../../../../redux/reducers/profile-reduces';
 
 const MyPosts = (props) => {
     let ref = React.createRef(),

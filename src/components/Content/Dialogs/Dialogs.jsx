@@ -2,7 +2,7 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import Name from './Name/Name';
 import Message from './Message/Message';
-import {addMessageData, updateMessageData} from '../../../redux/state';
+import {addMessageData, updateMessageData} from '../../../redux/reducers/messages-reduces';
 
 const Dialogs = (props) => {
     let refTextMessage = React.createRef(),
