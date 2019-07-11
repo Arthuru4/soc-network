@@ -18,7 +18,17 @@ const _updatePost = (_state, val) => {
     _state.newPostInfo = val;
 };
 
-const profileReducer = (state, action) => {
+const localProfile = {
+            postData: [
+                {text: 'Hi', likesCount: '1', id: 1},
+                {text: 'Hello, How r u?', likesCount: '21', id: 2},
+                {text: 'Cool, and u??', likesCount: '11', id: 3},
+                {text: 'Hmm... green-green grass', likesCount: '2', id: 4},
+            ],
+            newPostInfo: 'it-kamasutra.com'
+        };
+
+const profileReducer = (state = localProfile, action) => {
     switch (action.type) {
         case ADD_POST:
             _addPost(state);

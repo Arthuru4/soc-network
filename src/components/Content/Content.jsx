@@ -13,12 +13,12 @@ const Content = (props) => {
         <div className={'app-wrapper__content'}>
             <Route path='/dialogs' render={() =>
                 <Dialogs
-                    messagesData={props.state.messagesData}
+                    messagesData={props.state.messageReducer}
                     dispatch={props.dispatch}
                 />}/>
 
             <Route path='/profile' render={() =>
-                <Profile profilePage={props.state.profilePage}
+                <Profile profilePage={props.state.profileReducer}
                          dispatch={props.dispatch}
                 />}/>
 
