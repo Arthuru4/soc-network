@@ -1,5 +1,4 @@
 import React from 'react';
-import Dialogs from './Dialogs/Dialogs';
 import Profile from './Profile/Profile';
 import News from './News/News';
 import Music from './Music/Music';
@@ -7,12 +6,13 @@ import Settings from './Settings/Settings';
 import {Route} from 'react-router-dom';
 import '../.././App.css';
 import s from './Content.module.css';
+import DialogsContainer from './Dialogs/DialogsContainer';
 
 const Content = (props) => {
     return (
         <div className={'app-wrapper__content'}>
             <Route path='/dialogs' render={() =>
-                <Dialogs
+                <DialogsContainer
                     messagesData={props.state.messageReducer}
                     dispatch={props.dispatch}
                 />}/>

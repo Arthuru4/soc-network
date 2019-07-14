@@ -2,7 +2,6 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import Name from './Name/Name';
 import Message from './Message/Message';
-import {addMessageData, updateMessageData} from '../../../redux/reducers/messages-reduces';
 
 const Dialogs = (props) => {
     let refTextMessage = React.createRef(),
@@ -10,7 +9,7 @@ const Dialogs = (props) => {
         style = s;
 
     let handlerMessage = (e) => {
-        if (props.messagesData.newMessage) props.dispatch(addMessageData());
+        if (props.newMessage) props.addMessage();
         else {
             e.target.classList.add(style.button_red);
             e.target.disabled = true;
@@ -30,26 +29,26 @@ const Dialogs = (props) => {
         if (!errorText.current.classList.contains('hidden')) errorText.current.classList.add('hidden');
         let text = refTextMessage.current.value;
 
-        props.dispatch(updateMessageData(text));
+        props.updateTextArea(text);
     };
 
     return (
         <div className={s.dialogs}>
             <div className={s.dialog__names}>
-                {props.messagesData.users.map((item, i) => {
+                {props.users.map((item, i) => {
                     return <Name key={i} state={item}/>
                 })}
             </div>
             <div className={s.dialog__messages}>
                 <div className={s.dialog__msgwrapper}>
-                    {props.messagesData.messages.map((item, i) => {
+                    {props.messages.map((item, i) => {
                         return <Message key={i} state={item}/>
                     })}
                 </div>
                 <div>
                     <div>
                         <textarea onChange={onUpdateTextArea} ref={refTextMessage}
-                                  value={props.messagesData.newMessage}/>
+                                  value={props.newMessage}/>
                     </div>
                     <div>
                         <button className={s.button} onClick={handlerMessage}>Add Message</button>

@@ -1,15 +1,21 @@
 import React from 'react';
-import s from './MyPosts.module.css';
 import Post from './Post/Post';
-import {addPostData, updatePostData} from '../../../../redux/reducers/profile-reduces';
+import s from './MyPosts.module.css';
 
 const MyPosts = (props) => {
     let ref = React.createRef(),
         errorText = React.createRef(),
         style = s;
 
-    let handleTextArea = (e) => {
-        if (props.myPostsProps.newPostInfo) props.dispatch(addPostData());
+    let onTextChange = () => {
+        if (!errorText.current.classList.contains('hidden')) errorText.current.classList.add('hidden');
+        const text = ref.current.value;
+
+        props.updatePostText(text)
+    };
+
+    let onAddPost = (e) => {
+        if (props.newPostInfo) props.addPost();
         else {
             e.target.classList.add(style.button_red);
             e.target.disabled = true;
@@ -26,26 +32,20 @@ const MyPosts = (props) => {
         }
     };
 
-    let updatePost = () => {
-        if (!errorText.current.classList.contains('hidden')) errorText.current.classList.add('hidden');
-        const text = ref.current.value;
-        props.dispatch(updatePostData(text));
-    };
-
     return <div className={s.postHead}>
         <h3>My Posts</h3>
         <div>
             <div>
-                <textarea ref={ref} onChange={updatePost} value={props.myPostsProps.newPostInfo} name="message"/>
+                <textarea ref={ref} onChange={onTextChange} value={props.newPostInfo} name="message"/>
             </div>
             <div>
-                <button className={s.button} onClick={handleTextArea}>Add Post</button>
+                <button className={s.button} onClick={onAddPost}>Add Post</button>
                 <span ref={errorText} className={`${s.error_text} hidden`}> You should type anything</span>
             </div>
         </div>
         <div className={s.posts}>
             {
-                props.myPostsProps.postData.map((item, i) => {
+                props.postData.map((item, i) => {
                     return <Post key={i} text={item.text} likesCount={item.likesCount}/>
                 })
             }
