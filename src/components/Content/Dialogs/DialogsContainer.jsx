@@ -1,22 +1,30 @@
 import React from 'react';
 import {addMessageData, updateMessageData} from '../../../redux/reducers/messages-reduces';
 import Dialogs from './Dialogs';
+import {ReactReduxContext} from 'react-redux';
 
-const DialogsContainer = (props) => {
-    let addMessage = () => {
-        props.dispatch(addMessageData());
-    };
-    let updateTextArea = (text) => {
-        props.dispatch(updateMessageData(text));
-    };
-
+const DialogsContainer = () => {
     return (
-        <Dialogs users = {props.messagesData.users}
-                 messages = {props.messagesData.messages}
-                 newMessage = {props.messagesData.newMessage}
-                 addMessage={addMessage}
-                 updateTextArea={updateTextArea}
-        />
+        <ReactReduxContext.Consumer>
+            {
+                stor => {
+                    const store = stor.store,
+                        addMessage = () => {
+                            store.dispatch(addMessageData());
+                        },
+                        updateTextArea = (text) => {
+                            store.dispatch(updateMessageData(text));
+                        };
+
+                    return <Dialogs users={store.getState().messageReducer.users}
+                                    messages={store.getState().messageReducer.messages}
+                                    newMessage={store.getState().messageReducer.newMessage}
+                                    addMessage={addMessage}
+                                    updateTextArea={updateTextArea}
+                    />
+                }
+            }
+        </ReactReduxContext.Consumer>
     )
 };
 

@@ -1,20 +1,27 @@
 import React from 'react';
 import MyPosts from './MyPosts';
 import {addPostData, updatePostData} from '../../../../redux/reducers/profile-reduces';
+import {ReactReduxContext} from 'react-redux';
 
 
 const MyPostsContainer = (props) => {
-    const updatePostText = (text) => {
-        props.dispatch(updatePostData(text));
-    };
-    const addPost = () => {
-        props.dispatch(addPostData())
-    };
+    return <ReactReduxContext.Consumer>
+        {
+            stor => {
+                const store = stor.store;
 
-    return <MyPosts postData={props.profilePage.postData}
-                    newPostInfo={props.profilePage.newPostInfo}
-                    updatePostText={updatePostText}
-                    addPost={addPost}/>
+                const updatePostText = (text) => {
+                    store.dispatch(updatePostData(text));
+                };
+                const addPost = () => {
+                    store.dispatch(addPostData())
+                };
+                return <MyPosts postData={store.getState().profileReducer.postData}
+                                newPostInfo={store.getState().profileReducer.newPostInfo}
+                                updatePostText={updatePostText}
+                                addPost={addPost}/>
+            }}
+    </ReactReduxContext.Consumer>
 };
 
 export default MyPostsContainer;

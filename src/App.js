@@ -3,18 +3,14 @@ import './App.css';
 import NavBar from './components/Navbar/Navbar';
 import Header from './components/Header/Header';
 import Content from './components/Content/Content';
-import {BrowserRouter} from 'react-router-dom';
 
-function App(props) {
+function App() {
     return (
-        <BrowserRouter>
-            <div className='app-wrapper'>
-                <Header/>
-                <NavBar/>
-                <Content state={props.state} dispatch={props.dispatch}
-                />
-            </div>
-        </BrowserRouter>
+        <div className='app-wrapper'>
+            <Header/>
+            <NavBar/>
+            <Content/>
+        </div>
     );
 }
 

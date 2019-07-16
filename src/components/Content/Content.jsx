@@ -8,19 +8,14 @@ import '../.././App.css';
 import s from './Content.module.css';
 import DialogsContainer from './Dialogs/DialogsContainer';
 
-const Content = (props) => {
+const Content = () => {
     return (
         <div className={'app-wrapper__content'}>
             <Route path='/dialogs' render={() =>
-                <DialogsContainer
-                    messagesData={props.state.messageReducer}
-                    dispatch={props.dispatch}
-                />}/>
+                <DialogsContainer/>}/>
 
             <Route path='/profile' render={() =>
-                <Profile profilePage={props.state.profileReducer}
-                         dispatch={props.dispatch}
-                />}/>
+                <Profile/>}/>
 
             <Route path='/news' component={News}/>
             <Route path='/Music' component={Music}/>

@@ -4,18 +4,23 @@ import store from './redux/redux-store';
 import ReactDOM from 'react-dom';
 import App from './App';
 import React from 'react';
+import {BrowserRouter} from 'react-router-dom';
+import {Provider} from 'react-redux';
 
-let renderEntireTree = (state) => {
-    ReactDOM.render(<App
-        state={state}
-        dispatch={store.dispatch.bind(store)}
-    />, document.getElementById('root'));
+let renderEntireTree = () => {
+    ReactDOM.render(
+        <BrowserRouter>
+            <Provider store={store}>
+                <App/>
+            </Provider>
+        </BrowserRouter>,
+        document.getElementById('root'));
 };
 
-renderEntireTree(store.getState());
+renderEntireTree();
 
 store.subscribe(() => {
-    renderEntireTree(store.getState())
+    renderEntireTree()
 });
 
 serviceWorker.unregister();
