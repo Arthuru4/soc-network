@@ -77,7 +77,6 @@ const store = {
         }
 
         this._callCallBack(this._state)
-
     }
 };
 

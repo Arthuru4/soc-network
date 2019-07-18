@@ -9,7 +9,7 @@ const Dialogs = (props) => {
         style = s;
 
     let handlerMessage = (e) => {
-        if (props.newMessage) props.addMessage();
+        if (props.messageReducer.newMessage) props.addMessage();
         else {
             e.target.classList.add(style.button_red);
             e.target.disabled = true;
@@ -35,20 +35,20 @@ const Dialogs = (props) => {
     return (
         <div className={s.dialogs}>
             <div className={s.dialog__names}>
-                {props.users.map((item, i) => {
+                {props.messageReducer.users.map((item, i) => {
                     return <Name key={i} state={item}/>
                 })}
             </div>
             <div className={s.dialog__messages}>
                 <div className={s.dialog__msgwrapper}>
-                    {props.messages.map((item, i) => {
+                    {props.messageReducer.messages.map((item, i) => {
                         return <Message key={i} state={item}/>
                     })}
                 </div>
                 <div>
                     <div>
                         <textarea onChange={onUpdateTextArea} ref={refTextMessage}
-                                  value={props.newMessage}/>
+                                  value={props.messageReducer.newMessage}/>
                     </div>
                     <div>
                         <button className={s.button} onClick={handlerMessage}>Add Message</button>

@@ -15,7 +15,7 @@ const MyPosts = (props) => {
     };
 
     let onAddPost = (e) => {
-        if (props.newPostInfo) props.addPost();
+        if (props.profileReducer.newPostInfo) props.addPost();
         else {
             e.target.classList.add(style.button_red);
             e.target.disabled = true;
@@ -36,7 +36,7 @@ const MyPosts = (props) => {
         <h3>My Posts</h3>
         <div>
             <div>
-                <textarea ref={ref} onChange={onTextChange} value={props.newPostInfo} name="message"/>
+                <textarea ref={ref} onChange={onTextChange} value={props.profileReducer.newPostInfo} name="message"/>
             </div>
             <div>
                 <button className={s.button} onClick={onAddPost}>Add Post</button>
@@ -45,7 +45,7 @@ const MyPosts = (props) => {
         </div>
         <div className={s.posts}>
             {
-                props.postData.map((item, i) => {
+                props.profileReducer.postData.map((item, i) => {
                     return <Post key={i} text={item.text} likesCount={item.likesCount}/>
                 })
             }

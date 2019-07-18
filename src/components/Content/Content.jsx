@@ -9,6 +9,7 @@ import s from './Content.module.css';
 import DialogsContainer from './Dialogs/DialogsContainer';
 
 const Content = () => {
+    debugger
     return (
         <div className={'app-wrapper__content'}>
             <Route path='/dialogs' render={() =>

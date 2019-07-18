@@ -19,28 +19,37 @@ const _updatePost = (_state, val) => {
 };
 
 const localProfile = {
-            postData: [
-                {text: 'Hi', likesCount: '1', id: 1},
-                {text: 'Hello, How r u?', likesCount: '21', id: 2},
-                {text: 'Cool, and u??', likesCount: '11', id: 3},
-                {text: 'Hmm... green-green grass', likesCount: '2', id: 4},
-            ],
-            newPostInfo: 'it-kamasutra.com'
-        };
+    postData: [
+        {text: 'Hi', likesCount: '1', id: 1},
+        {text: 'Hello, How r u?', likesCount: '21', id: 2},
+        {text: 'Cool, and u??', likesCount: '11', id: 3},
+        {text: 'Hmm... green-green grass', likesCount: '2', id: 4},
+    ],
+    newPostInfo: 'it-kamasutra.com'
+};
 
 const profileReducer = (state = localProfile, action) => {
     switch (action.type) {
         case ADD_POST:
-            _addPost(state);
+            if (state.newPostInfo) {
+                const tempPost = {
+                    text: state.newPostInfo,
+                    likesCount: 0,
+                    id: state.postData.length
+                };
+
+                state.postData.push(tempPost);
+                state.newPostInfo = '';
+            }
             break;
         case UPDATE_POST:
-            _updatePost(state, action.data);
+            state.newPostInfo = action.data;
             break;
         default:
-           break;
+            break
     }
 
-    return state;
+    return Object.assign({},state);
 };
 
 export const updatePostData = (text) => {
