@@ -1,24 +1,15 @@
 .worldWrapp {
     padding: 10px;
-
 }
 
 .title {
-    border: 2px solid #f00;
-    font: 20px normal;
-}
-
-.users {
-    border: 2px solid #f00;
-}
-
-.border {
-    border: 2px solid #0ff;
+    font: 25px bold;
+    margin-bottom: 20px;
+    border-bottom: 1px solid cyan;
 }
 
 .userWrap {
     display: grid;
-    /*margin-bottom: 10px;*/
     grid-template-columns: 2fr 10fr;
 }
 
@@ -30,8 +21,11 @@
 }
 
 .text_field {
+    display: grid;
+    grid-template-columns: 7fr 3fr;
     margin-bottom: 10px;
     border: 1px solid #000;
+    padding: 5px;
 }
 
 .avaWrapper {
@@ -55,13 +49,18 @@
 
 .right {
     text-align: right;
-    /*right: 0;*/
-}
-.adress {
-    font: 20px "Arial Rounded MT Bold";
-    /*right: 0;*/
+    float: right;
 }
 
-.inline {
-    display: inline-block;
+.full_name {
+    font: 20px bold;
+    padding-bottom: 40px;
+}
+
+.content {
+    margin: 10px 10px;
+}
+
+.adress {
+    font: 20px "Arial Rounded MT Bold";
 }

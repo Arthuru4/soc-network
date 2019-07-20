@@ -84,7 +84,7 @@ const worldReducer = (state = localSide, action) => {
             return {...state, curStep: state.curStep + 1};
         case FOLLOW_UNFOLLOW:
             let _state = {...state};
-            _state.users[action.id].follow = !_state.users[action.id].follow;
+            _state.users[action.id - 1].follow = !_state.users[action.id - 1].follow;
 
             return _state;
         default:
@@ -97,7 +97,7 @@ export const showMore = () => {
 };
 
 export const followUnfollow = (id) => {
-    return {type: FOLLOW_UNFOLLOW, data: id}
+    return {type: FOLLOW_UNFOLLOW, id}
 };
 
 export default worldReducer;
