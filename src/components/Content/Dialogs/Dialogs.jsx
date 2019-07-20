@@ -35,14 +35,14 @@ const Dialogs = (props) => {
     return (
         <div className={s.dialogs}>
             <div className={s.dialog__names}>
-                {props.messageReducer.users.map((item, i) => {
-                    return <Name key={i} state={item}/>
+                {props.messageReducer.users.map(item => {
+                    return <Name key={item.id} state={item}/>
                 })}
             </div>
             <div className={s.dialog__messages}>
                 <div className={s.dialog__msgwrapper}>
-                    {props.messageReducer.messages.map((item, i) => {
-                        return <Message key={i} state={item}/>
+                    {props.messageReducer.messages.map(item => {
+                        return <Message key={item.id} state={item}/>
                     })}
                 </div>
                 <div>

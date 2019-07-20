@@ -45,8 +45,8 @@ const MyPosts = (props) => {
         </div>
         <div className={s.posts}>
             {
-                props.profileReducer.postData.map((item, i) => {
-                    return <Post key={i} text={item.text} likesCount={item.likesCount}/>
+                props.profileReducer.postData.map(item => {
+                    return <Post key={item.id} text={item.text} likesCount={item.likesCount}/>
                 })
             }
         </div>

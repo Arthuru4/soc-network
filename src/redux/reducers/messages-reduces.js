@@ -64,24 +64,30 @@ const localMessages = {
 const messageReducer = (state = localMessages, action) => {
     switch (action.type) {
         case ADD_MESSAGE:
-            // _addMessage(state);
+            // state.messages.forEach((message, i) => _state.messages[i] = {...message});
+
             if (state.newMessage) {
-                let tempMsg = {
-                    message: state.newMessage,
-                    yours: true,
-                    id: state.messages.length
-                };
-                state.messages.push(tempMsg);
-                state.newMessage = '';
-            }
-            break;
+                return {
+                    ...state,
+                    newMessage: '',
+                    messages: [
+                        ...state.messages,
+                        {
+                            message: state.newMessage,
+                            yours: true,
+                            id: state.messages.length + 1
+                        }],
+                }
+            } else
+                return state;
         case UPDATE_MESSAGE:
-            state.newMessage = action.data;
-            break;
+            return {
+                ...state,
+                newMessage: action.data
+            };
         default:
-            break
+            return state;
     }
-    return Object.assign({},state);
 };
 
 export const addMessageData = () => {
@@ -90,6 +96,6 @@ export const addMessageData = () => {
 
 export const updateMessageData = (text) => {
     return {type: UPDATE_MESSAGE, data: text}
-}
+};
 
 export default messageReducer;

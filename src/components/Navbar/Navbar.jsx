@@ -22,18 +22,18 @@ const NavBar = () => {
     let friendsComp = (arr) => {
         return (
             <div className={s.Wrapp}>
-                {arr.map(el => {
+                {arr.map((el, i) => {
                     return (
-                        <div className={s.elemFriend}>
+                        <div className={s.elemFriend} key={i}>
                             {/*<div >*/}
                             <img src="https://habrastorage.org/webt/do/po/ex/dopoexqmfbzwvbyt6vlwvvaqqus.png"
                                  alt=""/>
                         </div>
                     )
                 })}
-                {arr.map(el => {
+                {arr.map((el,i)=> {
                     return (
-                        <div className={s.elemFriend}>
+                        <div className={s.elemFriend} key={i}>
                             <span className={s.textName}>{el}</span>
                         </div>
                     )
@@ -47,6 +47,7 @@ const NavBar = () => {
         <div className={s.item}><NavLink activeClassName={s.picked} to="/dialogs">Messages</NavLink></div>
         <div className={s.item}><NavLink activeClassName={s.picked} to="/news">News</NavLink></div>
         <div className={s.item}><NavLink activeClassName={s.picked} to="/music">Music</NavLink></div>
+        <div className={`${s.item} ${s.padding}`}><NavLink activeClassName={s.picked} to="/users">Find Users</NavLink></div>
         <div className={`${s.item} ${s.padding}`}><NavLink activeClassName={s.picked} to="/settings">Settings</NavLink>
         </div>
         <div className={s.friends}>

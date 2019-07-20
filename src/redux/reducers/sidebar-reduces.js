@@ -1,6 +1,8 @@
 const localSide = {};
 const sidebarReducer = (state = localSide, action) => {
-        return Object.assign({},state);
+    let _state = {...state};
+
+        return _state;
 };
 
 export default sidebarReducer;

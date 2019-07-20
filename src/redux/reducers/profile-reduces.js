@@ -1,23 +1,6 @@
 const UPDATE_POST = 'UPDATE-POST';
 const ADD_POST = 'ADD-POST';
 
-const _addPost = (_state) => {
-    if (_state.newPostInfo) {
-        const tempPost = {
-            text: _state.newPostInfo,
-            likesCount: 0,
-            id: _state.postData.length
-        };
-
-        _state.postData.push(tempPost);
-        _state.newPostInfo = '';
-    }
-};
-
-const _updatePost = (_state, val) => {
-    _state.newPostInfo = val;
-};
-
 const localProfile = {
     postData: [
         {text: 'Hi', likesCount: '1', id: 1},
@@ -31,25 +14,28 @@ const localProfile = {
 const profileReducer = (state = localProfile, action) => {
     switch (action.type) {
         case ADD_POST:
+            // state.newPostInfo.forEach((newPost, i) => _state.newPostInfo[i] = {...message});
             if (state.newPostInfo) {
-                const tempPost = {
-                    text: state.newPostInfo,
-                    likesCount: 0,
-                    id: state.postData.length
+                return {
+                    ...state,
+                    newPostInfo: '',
+                    postData: [...state.postData, {
+                        text: state.newPostInfo,
+                        likesCount: 0,
+                        id: state.postData.length + 1
+                    }],
                 };
-
-                state.postData.push(tempPost);
-                state.newPostInfo = '';
-            }
-            break;
+            } else
+                return state;
         case UPDATE_POST:
-            state.newPostInfo = action.data;
-            break;
-        default:
-            break
-    }
+            return {
+                ...state,
+                newPostInfo: action.data
+            };
 
-    return Object.assign({},state);
+        default:
+            return state;
+    }
 };
 
 export const updatePostData = (text) => {

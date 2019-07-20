@@ -1,4 +1,3 @@
-import React from 'react';
 import MyPosts from './MyPosts';
 import {addPostData, updatePostData} from '../../../../redux/reducers/profile-reduces';
 import connect from 'react-redux/es/connect/connect';
