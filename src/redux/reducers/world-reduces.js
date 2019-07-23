@@ -1,103 +1,46 @@
 const SHOW_MORE = 'SHOW_MORE',
+    SET_USERS = 'SET_USERS',
     FOLLOW_UNFOLLOW = 'FOLLOW_UNFOLLOW';
 
 const localSide = {
     curStep: 1,
-    users: [
-        {
-            id: 1,
-            fullName: 'Alexandr',
-            avaURL: '',
-            message: 'I\'ll be a great React Developer',
-            country: 'Ukraine',
-            follow: true,
-            city: 'Kremenchuk'
-        },
-        {
-            id: 2,
-            fullName: 'Lyudmila',
-            avaURL: '',
-            message: 'I\'m realy like to travel',
-            country: 'Ukraine',
-            follow: true,
-            city: 'Kremenchuk'
-        },
-        {
-            id: 3,
-            fullName: 'Anna',
-            avaURL: '',
-            message: 'I\'m realy like to travel too',
-            country: 'Ukraine',
-            follow: true,
-            city: 'Kremenchuk'
-        },
-        {
-            id: 4,
-            fullName: 'Luntik',
-            avaURL: '',
-            message: 'I\'m realy like to travel too',
-            country: 'Ukraine',
-            follow: true,
-            city: 'Kremenchuk'
-        },
-        {
-            id: 5,
-            fullName: 'Alexandr',
-            avaURL: '',
-            message: 'I\'ll be a great React Developer',
-            country: 'Ukraine',
-            follow: true,
-            city: 'Kremenchuk'
-        },
-        {
-            id: 6,
-            fullName: 'Lyudmila',
-            avaURL: '',
-            message: 'I\'m realy like to travel',
-            country: 'Ukraine',
-            follow: true,
-            city: 'Kremenchuk'
-        },
-        {
-            id: 7,
-            fullName: 'Anna',
-            avaURL: '',
-            message: 'I\'m realy like to travel too',
-            country: 'Ukraine',
-            follow: true,
-            city: 'Kremenchuk'
-        },
-        {
-            id: 8,
-            fullName: 'Luntik',
-            avaURL: '',
-            message: 'I\'m realy like to travel too',
-            country: 'Ukraine',
-            follow: false,
-            city: 'Kremenchuk'
-        }
-    ]
+    users: []
 };
 const worldReducer = (state = localSide, action) => {
     switch (action.type) {
         case SHOW_MORE:
-            return {...state, curStep: state.curStep + 1};
+            return {
+                ...state,
+                users: [...state.users],
+                curStep: state.curStep + 1
+            };
+        case SET_USERS:
+            return {
+                ...state,
+                users: [...state.users, ...action.users]
+            };
         case FOLLOW_UNFOLLOW:
-            let _state = {...state};
-            _state.users[action.id - 1].follow = !_state.users[action.id - 1].follow;
-
-            return _state;
+            return {
+                ...state,
+                users: state.users.map(u => {
+                    if (u.id === action.id) return {...u, follow: !u.follow};
+                    return u;
+                })
+            };
         default:
             return {...state}
     }
 };
 
-export const showMore = () => {
+export const showMoreAC = () => {
     return {type: SHOW_MORE}
 };
 
-export const followUnfollow = (id) => {
+export const followUnfollowAC = (id) => {
     return {type: FOLLOW_UNFOLLOW, id}
+};
+export const getUsersAC = (users) => {
+    return {type: SET_USERS, users}
 };
 
 export default worldReducer;

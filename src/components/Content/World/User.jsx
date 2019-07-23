@@ -7,11 +7,11 @@ const User = (props) => {
             <div className={`${s.avaWrapper}`}>
                 <img src={props.user.avaURL} alt="ava here"/>
                 <button className={`${s.button} ${s.btn_follow}`}
-                        onClick={props.followUnfollow}>{props.user.follow ? 'Follow' : 'Unfollow'}</button>
+                        onClick={props.followUnfollowAC}>{props.user.followed ? 'Follow' : 'Unfollow'}</button>
             </div>
             <div className={`${s.text_field} ${s.border_rounded}`}>
                 <div className={`${s.content}}`}>
-                    <div className={s.full_name}>{props.user.fullName}</div>
+                    <div className={s.full_name}>{props.user.name}</div>
                     <div className={s.message}>{props.user.message}</div>
                 </div>
                 <div className={`${s.adress} ${s.right}`}>

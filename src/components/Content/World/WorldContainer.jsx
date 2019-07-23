@@ -1,6 +1,6 @@
 import World from './World'
 import {connect} from 'react-redux';
-import {followUnfollow, showMore} from '../../../redux/reducers/world-reduces';
+import {followUnfollowAC, getUsersAC, showMoreAC} from '../../../redux/reducers/world-reduces';
 
 const stateArg = (state) => {
     return {
@@ -10,11 +10,11 @@ const stateArg = (state) => {
 
 const dispatchArg = (dispatch) => {
     return {
-        showMore: () => dispatch(showMore()),
-        followUnfollow: (id) => dispatch(followUnfollow(id))
+        showMoreAC: () => dispatch(showMoreAC()),
+        followUnfollowAC: (id) => dispatch(followUnfollowAC(id)),
+        getUsersAC: (users) => dispatch(getUsersAC(users))
     }
 };
-
 
 let WorldContainer = connect(stateArg, dispatchArg)(World);
 
