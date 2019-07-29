@@ -8,6 +8,20 @@
     border-bottom: 1px solid cyan;
 }
 
+.pages {
+    font-size: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+
+    /*border-bottom: 1px solid cyan;*/
+    cursor: pointer;
+}
+
+.pages_picked {
+    font-weight: bold;
+    color: red
+}
+
 .userWrap {
     display: grid;
     grid-template-columns: 2fr 10fr;

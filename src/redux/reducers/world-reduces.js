@@ -1,9 +1,13 @@
 const SHOW_MORE = 'SHOW_MORE',
     SET_USERS = 'SET_USERS',
+    SET_PAGES_INFO = 'SET_PAGES_INFO',
+    SET_PAGE = 'SET_PAGE',
     FOLLOW_UNFOLLOW = 'FOLLOW_UNFOLLOW';
 
 const localSide = {
-    curStep: 1,
+    totalCount: 0,
+    pageSize: 5,
+    currentPage: 2,
     users: []
 };
 const worldReducer = (state = localSide, action) => {
@@ -23,9 +27,23 @@ const worldReducer = (state = localSide, action) => {
             return {
                 ...state,
                 users: state.users.map(u => {
-                    if (u.id === action.id) return {...u, follow: !u.follow};
+                    if (u.id === action.id) return {...u, followed: !u.followed};
                     return u;
                 })
+            };
+        case SET_PAGE:
+            return {
+                ...state, currentPage: action.page
+            };
+        case SET_PAGES_INFO:
+            let totalCount, pageSize, users, currentPage;
+            ({totalCount, pageSize, users, currentPage} = action.obj);
+            return {
+                ...state,
+                users,
+                totalCount: totalCount || state.totalCount,
+                currentPage: currentPage || state.currentPage,
+                pageSize: pageSize || state.pageSize
             };
         default:
             return {...state}
@@ -41,6 +59,12 @@ export const followUnfollowAC = (id) => {
 };
 export const getUsersAC = (users) => {
     return {type: SET_USERS, users}
+};
+export const setCurrentPageAC = (page) => {
+    return {type: SET_PAGE, page}
+};
+export const setPagesInfoAC = (obj) => {
+    return {type: SET_PAGES_INFO, obj}
 };
 
 export default worldReducer;
