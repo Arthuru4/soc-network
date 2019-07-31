@@ -5,7 +5,7 @@ import Music from './Music/Music';
 import Users from './World/WorldContainer';
 import Settings from './Settings/Settings';
 import {Route} from 'react-router-dom';
-import '../.././App.css';
+import '../../App.css';
 import s from './Content.module.css';
 import DialogsContainer from './Dialogs/DialogsContainer';
 

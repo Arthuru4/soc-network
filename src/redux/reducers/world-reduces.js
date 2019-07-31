@@ -2,13 +2,15 @@ const SHOW_MORE = 'SHOW_MORE',
     SET_USERS = 'SET_USERS',
     SET_PAGES_INFO = 'SET_PAGES_INFO',
     SET_PAGE = 'SET_PAGE',
+    SET_PROGRESS = 'SET_PROGRESS',
     FOLLOW_UNFOLLOW = 'FOLLOW_UNFOLLOW';
 
 const localSide = {
     totalCount: 0,
     pageSize: 5,
     currentPage: 2,
-    users: []
+    users: [],
+    inProgress: false
 };
 const worldReducer = (state = localSide, action) => {
     switch (action.type) {
@@ -34,6 +36,10 @@ const worldReducer = (state = localSide, action) => {
         case SET_PAGE:
             return {
                 ...state, currentPage: action.page
+            };
+        case SET_PROGRESS:
+            return {
+                ...state, inProgress: action.isTrue
             };
         case SET_PAGES_INFO:
             let totalCount, pageSize, users, currentPage;
@@ -65,6 +71,9 @@ export const setCurrentPageAC = (page) => {
 };
 export const setPagesInfoAC = (obj) => {
     return {type: SET_PAGES_INFO, obj}
+};
+export const inProgressAC = (isTrue) => {
+    return {type: SET_PROGRESS, isTrue}
 };
 
 export default worldReducer;
