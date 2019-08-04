@@ -3,7 +3,7 @@ import {updatePostText, addPost} from '../../../../redux/reducers/profile-reduce
 import connect from 'react-redux/es/connect/connect';
 
 let mapStateToProps = (state) => {
-     return {
+    return {
         profileInfo: state.profileInfo,
     }
 };

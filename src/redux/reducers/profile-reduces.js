@@ -36,7 +36,7 @@ const profileReducer = (state = localProfile, action) => {
         case SET_PROFILE_INFO:
             return {
                 ...state,
-                profile: {...action.data}
+                profile: {...action.profile}
             };
 
         default:
@@ -51,8 +51,8 @@ export const updatePostText = (text) => {
 export const addPost = () => {
     return {type: ADD_POST}
 };
-export const setProfileInfo = (data) => {
-    return {type: SET_PROFILE_INFO, data}
+export const setProfileInfo = (profile) => {
+    return {type: SET_PROFILE_INFO, profile}
 };
 
 export default profileReducer;

@@ -8,7 +8,7 @@ const Profile = (props) => {
     return (
         <div>
             <Preloader inProgress={props.inProgress}/>
-            <Legend profileInfo={props.profileInfo}/>
+            <Legend profile={props.profile}/>
             <MyPostsContainer/>
         </div>
     )

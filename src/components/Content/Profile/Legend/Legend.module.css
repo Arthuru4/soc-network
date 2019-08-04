@@ -9,9 +9,51 @@
 .ava img {
     display: inline-block;
     height: auto;
-    width: 100px;
+    width: 200px;
 }
 
 .ava {
+
+    /*box-sizing: content-box;*/
+}
+
+.content {
     padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+.info {
+    margin: 0 10px;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.job {
+    padding-top: 10px;
+}
+
+.aboutMe {
+
+    background-color: #fff;
+    border: 2px solid #000;
+    border-radius: 5px;
+    width: 300px;
+}
+
+.contactsWrapp {
+    margin-top: 10px;
+}
+
+.contactsWrapp a {
+    margin: 10px;
+    list-style-type: circle;
+    text-decoration: none;
+}
+
+.contactsWrapp a:visited {
+    color: blue;
 }
