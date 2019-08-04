@@ -38,11 +38,11 @@ const profileReducer = (state = localProfile, action) => {
     }
 };
 
-export const updatePostData = (text) => {
+export const updatePostText = (text) => {
     return {type: UPDATE_POST, data: text}
 };
 
-export const addPostData = () => {
+export const addPost = () => {
     return {type: ADD_POST}
 };
 

@@ -45,23 +45,19 @@ class WorldAPI extends React.Component {
     }
 }
 
-const stateArg = (state) => {
+const mapStateToProps = (state) => {
     return {
         worldReducer: state.worldReducer
     }
 };
 
-const dispatchArg = (dispatch) => {
-    return {
-        showMoreAC: () => dispatch(showMoreAC()),
-        followUnfollowAC: (id) => dispatch(followUnfollowAC(id)),
-        getUsersAC: (users) => dispatch(getUsersAC(users)),
-        setPagesInfoAC: (users) => dispatch(setPagesInfoAC(users)),
-        inProgressAC: (bool) => dispatch(inProgressAC(bool)),
-        setCurrentPageAC: (page) => dispatch(setCurrentPageAC(page))
-    }
-};
-
-let WorldContainer = connect(stateArg, dispatchArg)(WorldAPI);
+let WorldContainer = connect(mapStateToProps, {
+    showMoreAC,
+    followUnfollowAC,
+    getUsersAC,
+    setPagesInfoAC,
+    inProgressAC,
+    setCurrentPageAC
+})(WorldAPI);
 
 export default WorldContainer

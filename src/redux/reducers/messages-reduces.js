@@ -90,11 +90,11 @@ const messageReducer = (state = localMessages, action) => {
     }
 };
 
-export const addMessageData = () => {
+export const addMessage = () => {
     return {type: ADD_MESSAGE}
 };
 
-export const updateMessageData = (text) => {
+export const updateTextArea = (text) => {
     return {type: UPDATE_MESSAGE, data: text}
 };
 
