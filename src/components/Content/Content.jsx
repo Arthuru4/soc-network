@@ -2,12 +2,13 @@ import React from 'react';
 import Profile from './Profile/Profile';
 import News from './News/News';
 import Music from './Music/Music';
-import Users from './World/WorldContainer';
+import WorldContainer from './World/WorldContainer';
 import Settings from './Settings/Settings';
 import {Route} from 'react-router-dom';
 import '../../App.css';
 import s from './Content.module.css';
 import DialogsContainer from './Dialogs/DialogsContainer';
+import ProfileContainer from './Profile/ProfileContainer';
 
 const Content = () => {
     return (
@@ -16,11 +17,11 @@ const Content = () => {
                 <DialogsContainer/>}/>
 
             <Route path='/profile' render={() =>
-                <Profile/>}/>
+                <ProfileContainer/>}/>
 
             <Route path='/news' component={News}/>
             <Route path='/Music' component={Music}/>
-            <Route path='/Users' component={Users}/>
+            <Route path='/Users' component={WorldContainer}/>
             <Route path='/Settings' component={Settings}/>
         </div>
     )

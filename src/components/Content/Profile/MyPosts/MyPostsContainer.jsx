@@ -4,7 +4,7 @@ import connect from 'react-redux/es/connect/connect';
 
 let mapStateToProps = (state) => {
      return {
-        profileReducer: state.profileReducer,
+        profileInfo: state.profileInfo,
     }
 };
 

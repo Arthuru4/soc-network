@@ -1,7 +1,9 @@
 const UPDATE_POST = 'UPDATE-POST';
 const ADD_POST = 'ADD-POST';
+const SET_PROFILE_INFO = 'SET_PROFILE_INFO';
 
 const localProfile = {
+    profile: {},
     postData: [
         {text: 'Hi', likesCount: '1', id: 1},
         {text: 'Hello, How r u?', likesCount: '21', id: 2},
@@ -14,7 +16,6 @@ const localProfile = {
 const profileReducer = (state = localProfile, action) => {
     switch (action.type) {
         case ADD_POST:
-            // state.newPostInfo.forEach((newPost, i) => _state.newPostInfo[i] = {...message});
             if (state.newPostInfo) {
                 return {
                     ...state,
@@ -32,6 +33,11 @@ const profileReducer = (state = localProfile, action) => {
                 ...state,
                 newPostInfo: action.data
             };
+        case SET_PROFILE_INFO:
+            return {
+                ...state,
+                profile: {...action.data}
+            };
 
         default:
             return state;
@@ -44,6 +50,9 @@ export const updatePostText = (text) => {
 
 export const addPost = () => {
     return {type: ADD_POST}
+};
+export const setProfileInfo = (data) => {
+    return {type: SET_PROFILE_INFO, data}
 };
 
 export default profileReducer;

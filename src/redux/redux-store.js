@@ -5,7 +5,7 @@ import {combineReducers, createStore} from 'redux';
 import worldReducer from './reducers/world-reduces';
 
 const reducers = combineReducers({
-    profileReducer,
+    profileInfo: profileReducer,
     messageReducer,
     worldReducer,
     sidebarReducer
